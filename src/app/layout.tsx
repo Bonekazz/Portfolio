@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 const FontRobotoMono = Roboto_Mono({
   subsets: ['latin'],
@@ -15,13 +16,21 @@ const FontRoboto = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "Portfolio | Hierro Fernandes",
-  description: 'My custom preview for social media!',
+  description: "Veja os trabalhos feitos por Hierro Fernandes durante sua carreira como desenvolvedor de software.",
   openGraph: {
-
     title: "Portfolio | Hierro Fernandes",
-    description: 'My custom preview for social media!',
-    images: ["/preview.jpg"],
-  },
+    description: "Veja os trabalhos feitos por Hierro Fernandes durante sua carreira como desenvolvedor de software.",
+    url: "https://hierrofernandes.vercel.app",
+    siteName: "Portfolio | Hierro Fernandes",
+    images: [
+      {
+        
+        url: "/preview.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
@@ -31,6 +40,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${FontRobotoMono.variable} ${FontRoboto.variable}`}>
+      <Head>
+        <meta property="og:title" content="Portfolio | Hierro Fernandes" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="/preview.jpg" />
+        <meta property="og:type" content="website" />
+      </Head>
       <body
         className={`font-robotoMono bg-white`}
       >
