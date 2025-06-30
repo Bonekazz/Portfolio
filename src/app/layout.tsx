@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto_Mono, Roboto } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
 const FontRobotoMono = Roboto_Mono({
@@ -15,6 +15,13 @@ const FontRoboto = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "Portfolio | Hierro Fernandes",
+  description: 'My custom preview for social media!',
+  openGraph: {
+
+    title: "Portfolio | Hierro Fernandes",
+    description: 'My custom preview for social media!',
+    images: ["/preview.jpg"],
+  },
 };
 
 export default function RootLayout({
