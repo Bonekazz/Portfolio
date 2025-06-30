@@ -26,8 +26,8 @@ export default function Page() {
   return (
     <div className="w-full h-[100vh] flex flex-col items-center">
       <div className="
-        md:container h-full md:grid md:grid-cols-[43%_1fr] 
-        flex flex-col
+        md:container md:h-full md:grid md:grid-cols-[43%_1fr] 
+        flex flex-col h-fit
       ">
 
         { /** 1st COLUMN **/ }
@@ -88,7 +88,7 @@ export default function Page() {
           <div className={`
             md:h-[300px]
             w-full h-[200px] rounded-xl bg-[url('/follow-the-white-rabbit.gif?L1ptRjZiMnc9LmpwZw==')] bg-cover bg-bottom
-          `}>
+          `} >
           </div>
 
         </div>
@@ -96,9 +96,9 @@ export default function Page() {
         {/** 2nd COLUMN **/}
         <div className={`
           md:pl-12 md:px-0 md:pb-0
-          flex flex-col gap-8 pt-12 px-4 pb-5
+          flex flex-col gap-8 pt-12 px-4
         `}>
-          <h1 className="text-[32px] text´[#000000]">Trabalhos</h1>
+          <h1 className="text-[32px] text-[#000000]">Trabalhos</h1>
           <div className={`
             md:grid md:grid-cols-2 md:gap-3 md:gap-y-12
             flex flex-col gap-4
@@ -115,15 +115,14 @@ export default function Page() {
                     { /** <div className="absolute inset-0 bg-black bg-[rgba(0,0,0,0.1)] rounded-xl transition-opacity duration-300 group-hover:bg-opacity-60"></div> **/ }
                   </div>
                 </div>
-                <div className="flex gap-3">
-                  <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] ">Trabalho Voluntário</p>
-                  <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] ">Typescript</p>
+                <div className="flex gap-3 flex-wrap">
+                  <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]">Trabalho Voluntário</p>
+                  <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]">Typescript</p>
                 </div>
-                <h1 className="text-[20px] px-2 group-hover:text-purple-700 transition-all ease-in-out duration-300">{work.title}</h1>
+                <h1 className="text-[20px] text-[#000000] px-2 group-hover:text-purple-700 transition-all ease-in-out duration-300">{work.title}</h1>
               </div>
             ))
           }
-            
           </div>
         </div>
 
