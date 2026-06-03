@@ -1,5 +1,6 @@
 export interface IWork {
   id: string,
+  slug: string;
   heading: string,
   subHeading?: string,
   thumbUrl?: string,
@@ -8,14 +9,23 @@ export interface IWork {
   fromDate?: any
 };
 
-export const data = [
+export const data: IWork[] = [
   {
     id: "da", 
     slug: "avalieeme",
     heading: "Avaliee.me",
-    subHeading: "Aplicativo Web que auxiliou uma empresa de Impressão Gráfica a coletar feedback de clientes.",
+    subHeading: "Aplicativo Web para coleta de feedback de clientes.",
     thumbUrl: "/avalieeme-logo.png", // url
-    tags: [],
+    tags: ["aplicativo", "web"],
     fromDate: "2026",
+  },
+
+  {
+    id: "dada",
+    slug: "votz",
+    heading: "Votz",
+    subHeading: "Aplicativo, focado para celulares, para organização e montagem de times de vôlei.",
+    tags: ["aplicativo", "web", "pwa"],
+    fromDate: "2025",
   }
 ]

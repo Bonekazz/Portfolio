@@ -15,7 +15,15 @@ export default async function WorkPage({ params }: PageProps) {
     notFound();
   }
 
-  const { default: Content } = await import(`@/lib/database/work-content/${work.slug}.md`);
+  let Content;
+
+  try {
+    const { default: file } = await import(`@/lib/database/work-content/${work.slug}.mdx`);
+    if (!file) return notFound();
+    Content = file;
+  } catch (error) {
+    return notFound();
+  }
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center">
