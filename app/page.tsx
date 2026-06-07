@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { data, IWork } from "@/lib/database/work-data";
+import { cn } from "@/lib/utils";
 
 export default async function Page() {
 
@@ -88,15 +89,18 @@ export default async function Page() {
             flex flex-col gap-4
           `}>
 
-          {works.map((work: any) => (
+          {works.map((work: IWork) => (
             <Link
               key={work.id}
               href={`/works/${work.slug}`}
               className="group transition-all ease-in-out duration-300 hover:cursor-pointer hover:border-purple-700 w-full flex flex-col gap-3 border-2 rounded-3xl px-3 pt-3 py-8"
             >
-              <div className="w-full h-[200px] border rounded-xl overflow-hidden">
+              <div className="w-full h-50 border rounded-xl overflow-hidden">
                 <div
-                  className="w-full h-full transition-all ease-in-out duration-300 group-hover:scale-[1.1] bg-cover bg-center"
+                  className={cn(
+                    "w-full h-full transition-all ease-in-out duration-300 group-hover:scale-[1.1] bg-cover",
+                    work.thumbConfig && work.thumbConfig.twClasses && work.thumbConfig.twClasses
+                  )}
                   style={{
                     backgroundImage: work.thumbUrl
                       ? `url(${work.thumbUrl})`

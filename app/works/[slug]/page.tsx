@@ -1,5 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { data } from "@/lib/database/work-data";
+import { cn } from "@/lib/utils";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -41,19 +44,46 @@ export default async function WorkPage({ params }: PageProps) {
           <h1 className="text-[32px] font-semibold text-[#000000]">
             {work.heading}
           </h1>
-          <div className="text-[#737373]">
+          <div className="text-[#737373] flex flex-col gap-5">
             <p>{work.subHeading}</p>
-            {work.fromDate && (
-              <span className="text-[14px]">
-                {work.fromDate}
-              </span>
+            {work.tags.length > 0 && (
+              <section className="flex flex-wrap gap-3">
+                {work.tags.map((tag: any) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 rounded-full bg-slate-100 text-[14px] text-[rgba(0,0,0,0.5)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </section>
             )}
           </div>
         </header>
 
         <Separator />
 
-        <section className="prose max-w-none w-full">
+        <section className="prose max-w-none w-full flex flex-col gap-2">
+          { work.thumbUrl && (
+            <div className="w-full h-80 border rounded-xl overflow-hidden">
+              <div
+                className={cn(
+                  "w-full h-full transition-all ease-in-out duration-300 group-hover:scale-[1.1] bg-cover",
+                  work.thumbConfig && work.thumbConfig.twClasses && work.thumbConfig.twClasses
+                )}
+                style={{
+                  backgroundImage: work.thumbUrl
+                    ? `url(${work.thumbUrl})`
+                    : "linear-gradient(to bottom right, #e5e7eb, #d1d5db)",
+                }}
+              />
+            </div>
+          )}
+          { work.demoUrl && (
+            <a href={work.demoUrl} target="_blank">
+              <Button variant="link" className="text-muted-foreground opacity-80 cursor-pointer">acesse aqui <ExternalLink /></Button>
+            </a>
+          )}
           <div className="w-full">
             <Content />
           </div>
@@ -71,18 +101,7 @@ export default async function WorkPage({ params }: PageProps) {
           )} */}
         </section>
 
-        {work.tags.length > 0 && (
-          <section className="flex flex-wrap gap-3">
-            {work.tags.map((tag: any) => (
-              <span
-                key={tag}
-                className="px-3 py-1 rounded-full bg-slate-100 text-[14px] text-[rgba(0,0,0,0.5)]"
-              >
-                {tag}
-              </span>
-            ))}
-          </section>
-        )}
+
       </div>
     </div>
   );
