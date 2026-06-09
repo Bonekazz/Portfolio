@@ -63,7 +63,7 @@ export default async function WorkPage({ params }: PageProps) {
 
         <Separator />
 
-        <section className="prose max-w-none w-full flex flex-col gap-2">
+        <section className="prose prose-h2:text-black prose-p:text-muted-foreground max-w-none w-full flex flex-col gap-2">
           { work.thumbUrl && (
             <div className="w-full h-80 border rounded-xl overflow-hidden">
               <div

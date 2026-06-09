@@ -4,6 +4,8 @@ import "./globals.css";
 import Head from "next/head";
 import { cn } from "@/lib/utils";
 
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const FontRobotoMono = Roboto_Mono({
@@ -52,7 +54,9 @@ export default function RootLayout({
       <body
         className={`font-robotoMono bg-white`}
       >
-        {children}
+        <AppRouterCacheProvider>
+          {children}
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

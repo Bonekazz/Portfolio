@@ -1,3 +1,5 @@
+import LinkedinIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { data, IWork } from "@/lib/database/work-data";
@@ -8,7 +10,7 @@ export default async function Page() {
   const works: IWork[] = data;
   
   return (
-    <div className="w-full h-[100vh] flex flex-col items-center">
+    <div className="w-full h-screen flex flex-col items-center">
       <div className="
         md:container md:h-full md:grid md:grid-cols-[43%_1fr] 
         flex flex-col h-fit
@@ -30,10 +32,10 @@ export default async function Page() {
               md:flex-row md:gap-4
               flex flex-col gap-2
             `}>
-              <div className="w-[75px] h-[75px] rounded-full bg-slate-600 bg-[url('/pfp.jpg')] bg-cover bg-center"></div>
+              <div className="w-18.75 h-18.75 rounded-full bg-slate-600 bg-[url('/pfp.jpg')] bg-cover bg-center"></div>
               <div className="flex flex-col">
                 <h1 className="text-[32px] font-semibold text-[#000000]">Hierro Fernandes</h1>
-                <h2 className="text-[20px] mt-[-10px] text-[#000000]">Desenvolvedor de Software | Fullstack</h2>
+                <h2 className="text-[20px] -mt-2.5 text-[#000000]">Desenvolvedor de Software | Fullstack</h2>
               </div>
             </div>
             
@@ -48,7 +50,7 @@ export default async function Page() {
               </div>
               <div className="flex items-center gap-1">
                 <Mail color="#737373" size={22}/>
-                <p className="text-[#737373] text-[15px]">hierrofernandes23@gmail.com</p>
+                <p className="text-[#737373] text-[15px]">hierrofernandes25@gmail.com</p>
               </div>
             </div>
 
@@ -59,11 +61,11 @@ export default async function Page() {
 
             { /** SOCIALS AND CONTACT **/ }
             <div className="flex gap-4">
-              <a target="_blank" href="https://www.linkedin.com/in/hierro-fernandes-1b56311ab/" className="flex border-2 border-black rounded-lg p-1 hover:scale-[1.1] transition-all ease-in-out">
-                Linkedin
+              <a target="_blank" href="https://www.linkedin.com/in/hierro-fernandes-1b56311ab/" className="flex hover:scale-[1.1] transition-all ease-in-out">
+                <LinkedinIcon className="text-muted-foreground"/>
               </a>
-              <a target="_blank" href="https://github.com/Bonekazz" className="flex border-2 border-black rounded-lg p-1 hover:scale-[1.1] transition-all ease-in-out">
-                Github
+              <a target="_blank" href="https://github.com/Bonekazz" className="flex hover:scale-[1.1] transition-all ease-in-out">
+                <GitHubIcon className="text-muted-foreground"/>
               </a>
             </div>
 
@@ -71,8 +73,8 @@ export default async function Page() {
 
           { /** GIF **/ }
           <div className={`
-            md:h-[300px]
-            w-full h-[200px] rounded-xl bg-[url('/follow-the-white-rabbit.gif?L1ptRjZiMnc9LmpwZw==')] bg-cover bg-bottom
+            md:h-75
+            w-full h-50 rounded-xl bg-[url('/follow-the-white-rabbit.gif?L1ptRjZiMnc9LmpwZw==')] bg-cover bg-bottom
           `} >
           </div>
 
@@ -125,7 +127,7 @@ export default async function Page() {
                       </p>
                     )}
                   </div>
-                  <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent" />
+                  <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-linear-to-l from-white to-transparent" />
                 </div>
               )}
               <h1 className="text-[20px] text-[#000000] px-2 group-hover:text-purple-700 transition-all ease-in-out duration-300">
