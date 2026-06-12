@@ -1,6 +1,7 @@
 export interface IWork {
   id: string,
   slug: string;
+  featured?: boolean;
   heading: string,
   subHeading?: string,
   thumbUrl?: string,
@@ -38,5 +39,17 @@ export const data: IWork[] = [
     fromDate: "2025",
 
     demoUrl: "https://votz-sm.vercel.app/"
+  },
+  {
+    id: "dada2",
+    featured: true,
+    slug: "customer-support-app-extensions",
+    heading: "Extensões para Aplicativo de Suporte ao Cliente",
+    thumbUrl: "/works/votz.jpg", // url
+    subHeading: "Conjunto de extensões desenvolvidas para otimizar o trabalho de analistas no suporte ao cliente.",
+    tags: ["web", "bookmarklet"],
+    fromDate: "2025",
+
+    // demoUrl: "https://votz-sm.vercel.app/"
   }
 ]

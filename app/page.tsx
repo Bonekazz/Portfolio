@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 export default async function Page() {
 
   const works: IWork[] = data;
+
+  const featuredWork = works.find(x => x.featured);
   
   return (
     <div className="w-full h-screen flex flex-col items-center">
@@ -91,51 +93,105 @@ export default async function Page() {
             flex flex-col gap-4
           `}>
 
-          {works.map((work: IWork) => (
+          {featuredWork && (
             <Link
-              key={work.id}
-              href={`/works/${work.slug}`}
-              className="group transition-all ease-in-out duration-300 hover:cursor-pointer hover:border-purple-700 w-full flex flex-col gap-3 border-2 rounded-3xl px-3 pt-3 py-8"
+              key={featuredWork.id}
+              href={`/works/${featuredWork.slug}`}
+              className="
+                col-span-2 group transition-all ease-in-out duration-300 hover:cursor-pointer hover:border-purple-700 w-full flex flex-col gap-3 border-2 rounded-3xl px-3 pt-3 py-8
+                md:grid md:grid-cols-2
+              "
             >
               <div className="w-full h-50 border rounded-xl overflow-hidden">
                 <div
                   className={cn(
                     "w-full h-full transition-all ease-in-out duration-300 group-hover:scale-[1.1] bg-cover",
-                    work.thumbConfig && work.thumbConfig.twClasses && work.thumbConfig.twClasses
+                    featuredWork.thumbConfig && featuredWork.thumbConfig.twClasses && featuredWork.thumbConfig.twClasses
                   )}
                   style={{
-                    backgroundImage: work.thumbUrl
-                      ? `url(${work.thumbUrl})`
+                    backgroundImage: featuredWork.thumbUrl
+                      ? `url(${featuredWork.thumbUrl})`
                       : "linear-gradient(to bottom right, #e5e7eb, #d1d5db)",
                   }}
                 />
               </div>
-              {work.tags.length > 0 && (
-                <div className="relative">
-                  <div className="flex gap-3 flex-wrap overflow-hidden pr-8">
-                    {work.tags.slice(0, 2).map((tag: any) => (
-                      <p
-                        key={tag}
-                        className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]"
-                      >
-                        {tag}
-                      </p>
-                    ))}
-                    {work.tags.length > 2 && (
-                      <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]">
-                        +{work.tags.length - 2}
-                      </p>
-                    )}
+              <div className="flex flex-col gap-2">
+                {featuredWork.tags.length > 0 && (
+                  <div className="relative">
+                    <div className="flex gap-3 flex-wrap overflow-hidden pr-8">
+                      {featuredWork.tags.slice(0, 2).map((tag: any) => (
+                        <p
+                          key={tag}
+                          className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]"
+                        >
+                          {tag}
+                        </p>
+                      ))}
+                      {featuredWork.tags.length > 2 && (
+                        <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]">
+                          +{featuredWork.tags.length - 2}
+                        </p>
+                      )}
+                    </div>
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-linear-to-l from-white to-transparent" />
                   </div>
-                  <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-linear-to-l from-white to-transparent" />
-                </div>
-              )}
-              <h1 className="text-[20px] text-[#000000] px-2 group-hover:text-purple-700 transition-all ease-in-out duration-300">
-                {work.heading}
-              </h1>
-              <p className="px-2 text-muted-foreground">{work.subHeading}</p>
+                )}
+                <h1 className="text-[20px] text-[#000000] px-2 group-hover:text-purple-700 transition-all ease-in-out duration-300">
+                  {featuredWork.heading}
+                </h1>
+                <p className="px-2 text-muted-foreground">{featuredWork.subHeading}</p>
+              </div>
             </Link>
-          ))}
+          )}
+
+          {works.map((work: IWork) => {
+            if (work.featured) return;
+            return (
+              <Link
+                key={work.id}
+                href={`/works/${work.slug}`}
+                className="group transition-all ease-in-out duration-300 hover:cursor-pointer hover:border-purple-700 w-full flex flex-col gap-3 border-2 rounded-3xl px-3 pt-3 py-8"
+              >
+                <div className="w-full h-50 border rounded-xl overflow-hidden">
+                  <div
+                    className={cn(
+                      "w-full h-full transition-all ease-in-out duration-300 group-hover:scale-[1.1] bg-cover",
+                      work.thumbConfig && work.thumbConfig.twClasses && work.thumbConfig.twClasses
+                    )}
+                    style={{
+                      backgroundImage: work.thumbUrl
+                        ? `url(${work.thumbUrl})`
+                        : "linear-gradient(to bottom right, #e5e7eb, #d1d5db)",
+                    }}
+                  />
+                </div>
+                {work.tags.length > 0 && (
+                  <div className="relative">
+                    <div className="flex gap-3 flex-wrap overflow-hidden pr-8">
+                      {work.tags.slice(0, 2).map((tag: any) => (
+                        <p
+                          key={tag}
+                          className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]"
+                        >
+                          {tag}
+                        </p>
+                      ))}
+                      {work.tags.length > 2 && (
+                        <p className="px-3 py-1 rounded-full bg-slate-100 w-fit text-[14px] text-[rgba(0,0,0,0.5)]">
+                          +{work.tags.length - 2}
+                        </p>
+                      )}
+                    </div>
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-linear-to-l from-white to-transparent" />
+                  </div>
+                )}
+                <h1 className="text-[20px] text-[#000000] px-2 group-hover:text-purple-700 transition-all ease-in-out duration-300">
+                  {work.heading}
+                </h1>
+                <p className="px-2 text-muted-foreground">{work.subHeading}</p>
+              </Link>
+            )
+          })}
           </div>
         </div>
 
